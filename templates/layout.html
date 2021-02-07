@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="es">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %} | Aprendiendo Flask {% endblock %} </title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css')}}" />
+    </head>
+    <body>
+
+
+            <!---cabecera de pagina-->
+    <header>
+        <div id="logotipo">
+            <!--logo Django-->
+            <img src="{{ url_for('static', filename='img/flask.png')}}" />
+            <h1> Flask | Adin Lopez</h1>
+        </div>
+    </header>
+    <nav>
+        <ul>
+
+                
+            <li>
+                <a href="/">Inicio</a>
+            </li>
+            <li>
+                <a href="{{url_for('crear_auto')}}">Crear auto</a>
+            </li>
+            <li>
+                <a href="{{url_for('autos')}}">Listado de autos</a>
+            </li>
+            <li>
+                <a href="{{url_for('informacion')}}">información</a>
+            </li>
+            <li>
+                <a href="{{url_for('contacto')}}">Contacto</a>
+            </li>
+            <li>
+                <a href="{{url_for('lenguajes')}}">Lenguajes de programación</a>
+            </li>
+
+
+
+        </ul>
+    </nav>
+    <div class="barra">
+        <span class="esquina-izquierda"></span>
+        <span class="relleno-barra"></span>
+        <span class="esquina-derecha"></span>
+    </div>
+
+
+    <div id=content>
+        <div class="box">
+        
+            {%block content%}
+                <strong>Contenido del bloque original</strong>
+            {%endblock%}
+
+        </div>
+
+    </div>
+
+    <footer>
+        Página con Flask; Adin López - {{ now.month }}/{{ now.year }}
+    </footer>
+
+    </body>
+
+</html>

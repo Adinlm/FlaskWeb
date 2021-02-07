@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Info
+{% endblock %}
+
+{% block content %}
+    
+    <h1>Listado de autos</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+
+                <div class="message alert-success">
+                    {{message}}
+                </div>
+            
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% for auto in autos %}
+        <article class="article-item">
+                
+            <div class="data">
+                <h2>
+                    <a href="{{url_for('auto', auto_id=auto.0)}}">
+                        {{auto.1}}
+                    </a>
+                </h2>
+
+                <span class="date">
+                    {{auto.2}}
+
+                    {{auto.3}}
+                </span>
+                
+                <p>
+                    {{auto.4}}
+                </p>
+
+                <p>
+                    <a href="{{ url_for('editar_auto', auto_id=auto.0)}}" class="btn btn-warning">Editar</a>
+                    <a href="{{ url_for('borrar_auto', auto_id=auto.0)}}" class="btn btn">Eliminar</a>
+                </p>
+
+            </div>
+
+            <div class="clearfix"></div>
+            <br/>
+        </article>
+        </br>
+    {% endfor %}
+
+
+
+{% endblock %}

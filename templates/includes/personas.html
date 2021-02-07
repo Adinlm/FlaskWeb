@@ -1,0 +1,7 @@
+<h2> listado de personas </h2>
+<ul>
+    {% for persona in personas %}
+        <li>{{loop.index}} {{ persona }}</li>
+    {% endfor %}
+</ul>
+<hr>
