@@ -1,0 +1,1 @@
+Set FLASK_SECRET_KEY privately in the environment before starting. There is no published fallback. Debug defaults to false; set FLASK_DEBUG=true only for local development. Configure MYSQL_PASSWORD locally. Existing published signing keys remain in history; rotate externally if still used, after reviewing session/signature impact. This patch does not deploy or revoke anything.
