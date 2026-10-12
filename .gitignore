@@ -1,0 +1,8 @@
+
+# Private local configuration and security backups
+.env
+.env.*
+!.env.example
+__pycache__/
+private-backups/
+*CREDENCIALES*PRIVADO*

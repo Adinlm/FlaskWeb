@@ -1,16 +1,19 @@
+import os
 from flask import Flask, flash, redirect, url_for, render_template, request
 from datetime import datetime
 from flask_mysqldb import MySQL
 
 app = Flask(__name__)
 
-app.secret_key = 'clave_secreta_flask'
+app.secret_key = os.environ.get('FLASK_SECRET_KEY')
+if not app.secret_key:
+    raise RuntimeError('Set FLASK_SECRET_KEY in the local/deployment environment.')
 
 # Conexión DB
 
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = os.environ.get('MYSQL_PASSWORD', '')
 app.config['MYSQL_DB'] = 'proyectoflask'
 
 mysql = MySQL(app)
@@ -142,4 +145,4 @@ def editar_auto(auto_id):
     return render_template('crear_auto.html', auto=auto[0])
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=os.environ.get('FLASK_DEBUG', 'false').lower() in ('1', 'true', 'yes', 'on'))
